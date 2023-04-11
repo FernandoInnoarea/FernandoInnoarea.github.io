@@ -22,7 +22,7 @@ var viewer = new Marzipano.Viewer(document.getElementById('pano'));
 var deviceOrientationControlMethod = new DeviceOrientationControlMethod();
 var controls = viewer.controls();
 controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
-/*
+
 // Create source.
 var source = Marzipano.ImageUrlSource.fromString(
   "//www.marzipano.net/media/cubemap/{f}.jpg"
@@ -41,9 +41,9 @@ var scene = viewer.createScene({
   geometry: geometry,
   view: view,
   pinFirstLevel: true
-});*/
+});
 
-
+/*
 // Create scenes.
 var scenes = data.scenes.map(function(data) {
   var urlPrefix = "tiles";
@@ -73,7 +73,7 @@ var scenes = data.scenes.map(function(data) {
     var element = createInfoHotspotElement(hotspot);
     scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
   });
-  */
+  
   return {
     data: data,
     scene: scene,
@@ -81,7 +81,8 @@ var scenes = data.scenes.map(function(data) {
   };
 });
 
-
+scenes.switchTo();
+*/
 
 
 
@@ -92,9 +93,8 @@ var scenes = data.scenes.map(function(data) {
 
 
 // Display scene.
-scenes.switchTo();
 
-//scene.switchTo();
+scene.switchTo();
 
 // Set up control for enabling/disabling device orientation.
 
