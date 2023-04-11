@@ -25,7 +25,7 @@ controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
 
 // Create source.
 var source = Marzipano.ImageUrlSource.fromString(
-    "./img/Plaza del ayuntamiento 8K.jpg"//"//www.marzipano.net/media/equirect/angra.jpg"//"//cdn.glitch.global/b1bc1c82-f64e-4d5c-a42c-466b59eb91ce/Plaza%20del%20ayuntamiento%208K.jpg?v=1681220070399"//"./img/Plaza del ayuntamiento 8K.jpg"
+    "./img/Plaza del ayuntamiento 4K.jpg"//"//www.marzipano.net/media/equirect/angra.jpg"//"//cdn.glitch.global/b1bc1c82-f64e-4d5c-a42c-466b59eb91ce/Plaza%20del%20ayuntamiento%208K.jpg?v=1681220070399"//"./img/Plaza del ayuntamiento 8K.jpg"
 );
 
 
