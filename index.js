@@ -32,9 +32,20 @@ var source = Marzipano.ImageUrlSource.fromString(
 // Create geometry.
 var geometry = new Marzipano.EquirectGeometry([{ width: 4096}]);
 
+//Initial View
+
+var initialView = {
+  ya: -3.037993090671444,
+  pitch: -0.22731284405465857,
+  fov: 1.2933824216075565
+};
+
+
+
+
 // Create view.
 var limiter = Marzipano.RectilinearView.limit.traditional(1024, 100 * Math.PI / 180);
-var view = new Marzipano.RectilinearView(null, limiter);
+var view = new Marzipano.RectilinearView(initialView, limiter);
 
 // Create scene.
 var scene = viewer.createScene({
