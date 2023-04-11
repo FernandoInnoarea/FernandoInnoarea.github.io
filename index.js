@@ -130,4 +130,6 @@ toggleElement.addEventListener('click', toggle);
 function ocultarPanel(){
   document.getElementById('panel').style.display = 'none';
   enable();
+  view.setParameters(destinationViewParameters);
+  console.log("Ocultado")
 }
