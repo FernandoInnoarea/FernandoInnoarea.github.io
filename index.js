@@ -25,7 +25,7 @@ controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
 
 // Create source.
 var source = Marzipano.ImageUrlSource.fromString(
-    "www.marzipano.net/media/equirect/angra.jpg"//"./img/Plaza del ayuntamiento 8K.jpg"
+    "//www.marzipano.net/media/equirect/angra.jpg"//"./img/Plaza del ayuntamiento 8K.jpg"
 );
 
 
