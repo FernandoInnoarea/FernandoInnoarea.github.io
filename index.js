@@ -92,7 +92,9 @@ var scenes = data.scenes.map(function(data) {
 
 
 // Display scene.
-scene.switchTo();
+scenes.switchTo();
+
+//scene.switchTo();
 
 // Set up control for enabling/disabling device orientation.
 
