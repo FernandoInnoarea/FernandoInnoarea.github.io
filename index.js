@@ -22,7 +22,7 @@ var viewer = new Marzipano.Viewer(document.getElementById('pano'));
 var deviceOrientationControlMethod = new DeviceOrientationControlMethod();
 var controls = viewer.controls();
 controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
-
+/*
 // Create source.
 var source = Marzipano.ImageUrlSource.fromString(
   "//www.marzipano.net/media/cubemap/{f}.jpg"
@@ -41,7 +41,55 @@ var scene = viewer.createScene({
   geometry: geometry,
   view: view,
   pinFirstLevel: true
+});*/
+
+
+// Create scenes.
+var scenes = data.scenes.map(function(data) {
+  var urlPrefix = "tiles";
+  var source = Marzipano.ImageUrlSource.fromString(
+      urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
+      { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
+  var geometry = new Marzipano.CubeGeometry(data.levels);
+
+  var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100*Math.PI/180, 120*Math.PI/180);
+  var view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
+
+  var scene = viewer.createScene({
+    source: source,
+    geometry: geometry,
+    view: view,
+    pinFirstLevel: true
+  });
+  /*
+  // Create link hotspots.
+  data.linkHotspots.forEach(function(hotspot) {
+    var element = createLinkHotspotElement(hotspot);
+    scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+  });
+
+  // Create info hotspots.
+  data.infoHotspots.forEach(function(hotspot) {
+    var element = createInfoHotspotElement(hotspot);
+    scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+  });
+  */
+  return {
+    data: data,
+    scene: scene,
+    view: view
+  };
 });
+
+
+
+
+
+
+
+
+
+
 
 // Display scene.
 scene.switchTo();
