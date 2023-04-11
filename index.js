@@ -58,7 +58,19 @@ var scene = viewer.createScene({
 
 // Display scene.
 
-scene.switchTo();
+scene.switchTo()
+
+var destinationViewParameters = {
+  ya: -3.037993090671444,
+  pitch: -0.22731284405465857,
+  fov: 1.2933824216075565
+};
+
+var options = {
+  transitionDuration: 2000
+}
+
+scene.lookTo(destinationViewParameters, options);
 
 // Set up control for enabling/disabling device orientation.
 
