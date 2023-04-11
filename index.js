@@ -24,9 +24,13 @@ var controls = viewer.controls();
 controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
 
 // Create source.
-var source = Marzipano.ImageUrlSource.fromString(
+/*var source = Marzipano.ImageUrlSource.fromString(
   "//www.marzipano.net/media/cubemap/{f}.jpg"
-);
+);*/
+
+var source = Marzipano.ImageUrlSource.fromString(
+    urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
+    { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
 
 // Create geometry.
 var geometry = new Marzipano.CubeGeometry([{ tileSize: 1024, size: 1024 }]);
