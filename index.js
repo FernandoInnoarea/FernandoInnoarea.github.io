@@ -99,3 +99,9 @@ function toggle() {
 }
 
 toggleElement.addEventListener('click', toggle);
+
+
+function ocultarPanel(){
+  document.getElementById('panel').style.display = 'none';
+  enable();
+}
