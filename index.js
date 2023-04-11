@@ -25,12 +25,12 @@ controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
 
 // Create source.
 var source = Marzipano.ImageUrlSource.fromString(
-  "./img/Plaza del ayuntamiento 8K.jpg"
+    "www.marzipano.net/media/equirect/angra.jpg"//"./img/Plaza del ayuntamiento 8K.jpg"
 );
 
 
 // Create geometry.
-var geometry = new Marzipano.EquirectGeometry([{ width: 4096}]);
+var geometry = new Marzipano.EquirectGeometry([{ width: 4000/*width: 4096*/}]);
 
 // Create view.
 var limiter = Marzipano.RectilinearView.limit.traditional(1024, 100 * Math.PI / 180);
