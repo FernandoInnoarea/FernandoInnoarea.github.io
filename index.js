@@ -35,7 +35,7 @@ var geometry = new Marzipano.EquirectGeometry([{ width: 4096}]);
 //Initial View
 
 var initialView = {
-  ya: -3.037993090671444,
+  yaw: -3.037993090671444,
   pitch: -0.22731284405465857,
   fov: 1.2933824216075565
 };
@@ -58,16 +58,6 @@ var scene = viewer.createScene({
 
 // Display scene.
 
-
-var destinationViewParameters = {
-  ya: -3.037993090671444,
-  pitch: -0.22731284405465857,
-  fov: 1.2933824216075565
-};
-
-var options = {
-  transitionDuration: 2000
-};
 
 //scene.lookTo(destinationViewParameters);
 scene.view().setParameters(destinationViewParameters);
@@ -131,9 +121,6 @@ toggleElement.addEventListener('click', toggle);
 function ocultarPanel(){
   document.getElementById('panel').style.display = 'none';
   enable();
-  /*view.setParameters(destinationViewParameters);
-  scene.switchTo();*/
-  console.log("Ocultado 23");
-  //scene.lookTo(destinationViewParameters, options);
+  console.log("Ocultado 24");
   
 }
