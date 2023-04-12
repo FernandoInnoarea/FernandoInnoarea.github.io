@@ -121,10 +121,8 @@ function toggle() {
 
 toggleElement.addEventListener('click', toggle);
 
-/*
-var options = {
-  transitionDuration: 2000
-}*/
+
+
 
 function ocultarPanel(){
   document.getElementById('panel').style.display = 'none';
@@ -133,4 +131,12 @@ function ocultarPanel(){
   
   //scene.lookTo(initialView, options, enable);
   
+}
+
+
+var options = {
+  transitionDuration: 1000
+}
+function restartView(){
+  scene.lookTo(initialView, options);
 }

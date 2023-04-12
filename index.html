@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div id="pano"> Si ves este texto es que la imagen está cargando</div>
+<div id="pano"></div>
 
 <div id="toggleDeviceOrientation">
   <img class="enable" src="img/enable.png">
@@ -23,8 +23,13 @@
 
 <div id="panel">
   <div id="texto">¡Atención, no te muevas! Prueba fotos 28</div>
-  <button id="boton" onclick="ocultarPanel()">Pulsa aqui para empezar</button>
+  <button id="botonStart" onclick="ocultarPanel()">Pulsa aqui para empezar</button>
 </div>
+
+<div>
+  <button id="buttonRestart" onclick="restartView()"></button>
+</div>
+
 
 <script src="vendor/marzipano.js" ></script>
 
