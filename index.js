@@ -113,10 +113,15 @@ function toggle() {
 
 toggleElement.addEventListener('click', toggle);
 
+var options = {
+  transitionDuration: 2000
+}
 
 function ocultarPanel(){
   document.getElementById('panel').style.display = 'none';
   enable();
-  console.log("Ocultado 2425");
+  console.log("Ocultado 26");
+  
+  scene.lookTo(initialView, options);
   
 }
