@@ -57,10 +57,6 @@ var scene = viewer.createScene({
 
 
 // Display scene.
-
-
-//scene.lookTo(destinationViewParameters);
-scene.view().setParameters(destinationViewParameters);
 scene.switchTo();
 
 // Set up control for enabling/disabling device orientation.
@@ -121,6 +117,6 @@ toggleElement.addEventListener('click', toggle);
 function ocultarPanel(){
   document.getElementById('panel').style.display = 'none';
   enable();
-  console.log("Ocultado 24");
+  console.log("Ocultado 2425");
   
 }
