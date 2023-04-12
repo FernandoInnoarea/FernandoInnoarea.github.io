@@ -119,9 +119,9 @@ var options = {
 
 function ocultarPanel(){
   document.getElementById('panel').style.display = 'none';
-  enable();
-  console.log("Ocultado 26");
+  //enable();
+  console.log("Ocultado 27");
   
-  scene.lookTo(initialView, options);
+  scene.lookTo(initialView, options, enable);
   
 }
