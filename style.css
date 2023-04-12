@@ -35,6 +35,7 @@ html, body {
   left: 10px;
   background-color: rgb(103,115,131);
   background-color: rgba(103,115,131,0.8);
+  display: none;
 }
 
 #toggleDeviceOrientation img {

@@ -33,7 +33,6 @@ var source = Marzipano.ImageUrlSource.fromString(
 var geometry = new Marzipano.EquirectGeometry([{ width: 4096}]);
 
 //Initial View
-
 var initialView = {
   yaw: -3.037993090671444,
   pitch: -0.22731284405465857,
@@ -45,7 +44,10 @@ var initialView = {
 
 // Create view.
 var limiter = Marzipano.RectilinearView.limit.traditional(1024, 100 * Math.PI / 180);
-var view = new Marzipano.RectilinearView(initialView, limiter);
+
+// Descomentar esta si queremos una posicion inicial distinta, si no la default
+//var view = new Marzipano.RectilinearView(initialView, limiter);
+var view = new Marzipano.RectilinearView(null, limiter);
 
 // Create scene.
 var scene = viewer.createScene({
@@ -113,15 +115,16 @@ function toggle() {
 
 toggleElement.addEventListener('click', toggle);
 
+/*
 var options = {
   transitionDuration: 2000
-}
+}*/
 
 function ocultarPanel(){
   document.getElementById('panel').style.display = 'none';
-  //enable();
+  enable();
   console.log("Ocultado 27");
   
-  scene.lookTo(initialView, options, enable);
+  //scene.lookTo(initialView, options, enable);
   
 }
