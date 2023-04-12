@@ -58,7 +58,7 @@ html, body {
 
 #panel {
   width: 300px;
-  height: 300px;
+  height: 150px;
   background-color: #f2f2f2;
   border-radius: 10px;
   display: flex;
@@ -76,6 +76,7 @@ html, body {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Estilos para el botón */
@@ -93,14 +94,25 @@ html, body {
   width: 100px;
   height: 50px;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  bottom: 15px;
+  left: 15px;
 }
 
 #buttonRestart {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   right: 10px;
   width: 50px;
   height: 50px;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  
+}
+
+#buttonRestart img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
