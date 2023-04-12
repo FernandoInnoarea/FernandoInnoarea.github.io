@@ -32,6 +32,10 @@ var source = Marzipano.ImageUrlSource.fromString(
 // Create geometry.
 var geometry = new Marzipano.EquirectGeometry([{ width: 4096}]);
 
+
+
+
+
 //Initial View
 var initialView = {
   yaw: -3.037993090671444,
@@ -39,15 +43,17 @@ var initialView = {
   fov: 1.2933824216075565
 };
 
-
-
-
 // Create view.
 var limiter = Marzipano.RectilinearView.limit.traditional(1024, 100 * Math.PI / 180);
+
+
 
 // Descomentar esta si queremos una posicion inicial distinta, si no la default
 //var view = new Marzipano.RectilinearView(initialView, limiter);
 var view = new Marzipano.RectilinearView(null, limiter);
+
+
+
 
 // Create scene.
 var scene = viewer.createScene({
