@@ -1,45 +1,102 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>La Valentina Ayuntamiento</title>
-<link rel="icon" type="image/x-icon" href="img/LogoIconWeb.png">
-<meta name="description" content="Control the view through the DeviceOrientation API by using a custom control method." />
-<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
-<style>@-ms-viewport { width: device-width; }</style>
-<link rel="stylesheet" href="vendor/reset.min.css">
-<link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>&lt;La-Valentina&gt; El-Grau, Corredor-Verd</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+            src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js"
+            defer
+    ></script>
 </head>
 <body>
+<model-viewer
+        src="./models/ElGrao.glb"
+        ios-src="./models/ElGrao.usdz"
+        alt="Plano 3D"
+        shadow-intensity="1"
+        camera-controls
+        ar-modes="scene-viewer webxr"
+        auto-rotate
+        ar
+>
+    <button
+            slot="ar-button"
+            style="
+          width: 150px;
+          height: 60px;
+          background-color: #0e56d4;
+          border-radius: 15px;
+          border: none;
+          position: absolute;
+          top: 20px;
+          right: 16px;
+          font-size: 17px;
+          color: white;
+        "
+    >
+        Porta-t'ho al món real
+    </button>
+    <div class="slider">
+        <div class="slides">
+            <button
+                    class="slide"
+                    onclick="switchSrc(this, './models/ElGrao.glb', './models/ElGrao.usdz')"
+                    style="
+              background-image: url('https://cdn.glitch.global/373ccce0-b71c-4529-9eda-f292645d8e2e/Grau.png?v=1681282438461');
+              background-size: 110px 200px;
+            "
+            ></button
+            ><button
+                class="slide"
+                onclick="switchSrc(this, './models/ParqueCentral.glb', './models/ParqueCentral.usdz')"
+                style="
+              background-image: url('https://cdn.glitch.global/373ccce0-b71c-4529-9eda-f292645d8e2e/Corredor%20Verd.png?v=1681282437892');
+              background-size: 110px 200px;
+            "
+        ></button>
+        </div>
+    </div>
+    <div class="LogoDelegacion1">
+        <img
+                src="./img/LogoDelegacion.png"
+                alt="Logo-Delegación"
+                aria-label="remix"
+                style="width: 98px; height: 40px"
+        />
+    </div>
+</model-viewer>
+<script type="module">
+    const modelViewer = document.querySelector("model-viewer");
 
-<div id="pano"></div>
+    window.switchSrc = (element, name1, name2) => {
+        const base1 = name1;
+        const base2 = name2;
 
-<div id="toggleDeviceOrientation">
-  <img class="enable" src="img/enable.png">
-  <img class="disable" src="img/disable.png">
-</div>
+        modelViewer.src = base1;
+        modelViewer.iosSrc = base2;
 
-<div >
-  <img id="logoDelegacion" src="img/LogoNegro.png" alt="">
-</div>
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((element) => {
+            element.classList.remove("selected");
+        });
+        element.classList.add("selected");
+    };
 
-<div id="panel">
-  <div id="texto">Atenció! No et mogues!</div>
-  <button id="botonStart" onclick="ocultarPanel()">Prem ací per a començar</button>
-</div>
-
-<div>
-  <button id="buttonRestart" onclick="restartView()">
-    <img src="img/resetBlanco.png">
-  </button>
-</div>
-
-
-<script src="vendor/marzipano.js" ></script>
-
-<script src="DeviceOrientationControlMethod.js"></script>
-<script src="index.js"></script>
-
+    document
+        .querySelector(".slider")
+        .addEventListener("beforexrselect", (ev) => {
+            // Keep slider interactions from affecting the XR scene.
+            ev.preventDefault();
+        });
+</script>
+<script
+        type="module"
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+></script>
 </body>
 </html>

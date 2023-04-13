@@ -1,125 +1,114 @@
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  -webkit-touch-callout: none;
-  -ms-content-zooming: none;
+﻿html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0em;
+    padding: 0;
+    font-family: Google Sans, Noto, Roboto, Helvetica Neue, sans-serif;
+    color: #eeeeee;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
+model-viewer {
+    background-color: #eeeeee;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    --poster-color: #ffffff00;
 }
 
-#pano {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+#ar-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 132px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    color: #4285f4;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #dadce0;
 }
 
-#toggleDeviceOrientation {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgb(103,115,131);
-  background-color: rgba(103,115,131,0.8);
-  display: none;
+#ar-button:active {
+    background-color: #e8eaed;
 }
 
-#toggleDeviceOrientation img {
-  width: 34px;
-  margin: 8px;
+#ar-button:focus {
+    outline: none;
 }
 
-#toggleDeviceOrientation .disable {
-  display: none;
+#ar-button:focus-visible {
+    outline: 1px solid #4285f4;
 }
 
-#toggleDeviceOrientation.enabled .disable {
-  display: block;
+@keyframes circle {
+    from {
+        transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+    }
 }
 
-#toggleDeviceOrientation.enabled .enable {
-  display: none;
+@keyframes elongate {
+    from {
+        transform: translateX(100px);
+    }
+    to {
+        transform: translateX(-100px);
+    }
 }
 
-#panel {
-  width: 300px;
-  height: 150px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.slider {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    overflow: hidden;
+    position: absolute;
+    bottom: 25px;
 }
 
-/* Estilos para el texto */
-#texto {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
+.slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Estilos para el botón */
-#botonStart {
-  background-color: #F9BE3B;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-
+.slide {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #ffffff;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 90px;
+    border: none;
+    display: flex;
 }
 
-#logoDelegacion {
-  width: 100px;
-  height: 50px;
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
+.slide.selected {
+    border: 2px solid #4285f4;
 }
 
-#buttonRestart {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background-color: #F9BE3B;
+.slide:focus {
+    outline: none;
 }
 
-#buttonRestart img {
-  width: 60%;
-  height: auto;
-  
-
+.slide:focus-visible {
+    outline: 1px solid #4285f4;
+}
+.LogoDelegacion1 {
+    width: 100%;
+    position: relative;
+    top: 10px;
+    left:10px;
 }
