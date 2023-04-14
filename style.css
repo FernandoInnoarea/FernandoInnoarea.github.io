@@ -23,7 +23,7 @@ model-viewer {
     white-space: nowrap;
     bottom: 132px;
     padding: 0px 16px 0px 40px;
-    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #4285f4;
     height: 36px;
     line-height: 36px;
@@ -109,6 +109,7 @@ model-viewer {
 .LogoDelegacion1 {
     width: 100%;
     position: relative;
-    top: 10px;
+    top: 20px;
     left:10px;
 }
+
