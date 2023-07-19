@@ -1,108 +1,103 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>La Valentina 2023</title>
-    <link rel="icon" type="image/x-icon" href="img/faviconV2.png">
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <script
-            src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js"
-            defer
-    ></script>
-</head>
-<body>
-<model-viewer
-        src="./models/ElGrao.glb"
-        ios-src="./models/ElGrao.usdz"
-        alt="Plano 3D"
-        shadow-intensity="1"
-        camera-controls
-        ar-modes="scene-viewer webxr"
-        auto-rotate
-        ar
->
-    <button
-            slot="ar-button"
-            style="
-          width: 150px;
-          height: 60px;
-          background-color: #0e56d4;
-          border-radius: 15px;
-          border: none;
-          position: absolute;
-          top: 20px;
-          right: 16px;
-          font-size: 17px;
-          color: white;
-          font-family: 'Montserrat', sans-serif;
-
-        "
-    >
-        Porta-t'ho al MÓN REAL
-    </button>
-    <div class="slider">
-        <div class="slides">
-            <button
-                    id = "GraoButton"
-                    class="slide"
-                    onclick="switchSrc(this, './models/ElGrao.glb', './models/ElGrao.usdz')"
-                    style="
-              background-image: url('./img/Grau.png');
-              background-size: 110px 200px;
-            "
-            ></button
-            ><button
-                class="slide"
-                onclick="switchSrc(this, './models/ParqueCentral.glb', './models/ParqueCentral.usdz')"
-                style="
-              background-image: url('./img/Corredor Verd.png');
-              background-size: 110px 200px;
-            "
-        ></button>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | WebglBackgroundLoad</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
         </div>
+      </div>
+      <div id="unity-warning"> </div>
     </div>
-    <div class="LogoDelegacion1">
-        <img
-                src="./img/LogoDelegacion.png"
-                alt="Logo-Delegación"
-                aria-label="remix"
-                style="width: 150px; height: auto"
-        />
-    </div>
-</model-viewer>
-<script type="module">
-    const modelViewer = document.querySelector("model-viewer");
+    <script>
+      window.addEventListener("load", function () {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("ServiceWorker.js");
+        }
+      });
 
-    window.switchSrc = (element, name1, name2) => {
-        const base1 = name1;
-        const base2 = name2;
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var warningBanner = document.querySelector("#unity-warning");
 
-        modelViewer.src = base1;
-        modelViewer.iosSrc = base2;
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
 
-        const slides = document.querySelectorAll(".slide");
-        slides.forEach((element) => {
-            element.classList.remove("selected");
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/WebglAsync.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/WebglAsync.data.unityweb",
+        frameworkUrl: buildUrl + "/WebglAsync.framework.js.unityweb",
+        codeUrl: buildUrl + "/WebglAsync.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "WebglBackgroundLoad",
+        productVersion: "0.1.0",
+        showBanner: unityShowBanner,
+      };
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+        }).catch((message) => {
+          alert(message);
         });
-        element.classList.add("selected");
-    };
-
-    document
-        .querySelector(".slider")
-        .addEventListener("beforexrselect", (ev) => {
-            // Keep slider interactions from affecting the XR scene.
-            ev.preventDefault();
-        });
-</script>
-<script
-        type="module"
-        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-></script>
-<script src="index.js"></script>
-</body>
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
 </html>
